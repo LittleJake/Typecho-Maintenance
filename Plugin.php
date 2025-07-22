@@ -65,6 +65,10 @@ class Maintenance_Plugin implements Typecho_Plugin_Interface
      */
     public static function render()
     {
+        if (!Typecho_Widget::widget('Widget_Options')->plugin('Maintenance')
+            || !Typecho_Widget::widget('Widget_Options')->plugin('Maintenance')->switch) {
+            return;
+        }
         //渲染503页面
         if(in_array('on', Typecho_Widget::widget('Widget_Options')
             ->plugin('Maintenance')->switch)
